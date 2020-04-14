@@ -14,4 +14,5 @@ module.exports = {
   //   '!./packages/**/__sapper__/**',
   // ],
   coveragePathIgnorePatterns: ['/cypress/', '/node_modules/', '/__sapper__/'],
+  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
 };
