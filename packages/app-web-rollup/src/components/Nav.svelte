@@ -57,6 +57,9 @@
       <a class={segment === 'about' ? 'selected' : ''} href="about">about</a>
     </li>
     <li>
+      <a class={segment === 'love' ? 'selected' : ''} href="love">love</a>
+    </li>
+    <li>
       <a
         rel="prefetch"
         class={segment === 'todo' ? 'selected' : ''}

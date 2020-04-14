@@ -1,0 +1,11 @@
+{
+  "name": "@100shapes/component-fun",
+  "version": "1.0.0",
+  "description": "A Fun component",
+  "license": "MIT",
+  "private": true,
+  "svelte": "./Fun.svelte",
+  "files": [
+    "./Fun.svelte"
+  ]
+}

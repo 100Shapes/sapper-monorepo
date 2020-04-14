@@ -32,8 +32,8 @@ function runTask(type, n) {
         shell: true,
         stdio: 'inherit',
       })
-        .on('close', _ => resolve(result))
-        .on('exit', _ => resolve(result));
+        .on('close', (_) => resolve(result))
+        .on('exit', (_) => resolve(result));
     } else {
       reject('Not enough arguments, you need to supply a name!');
     }
@@ -43,12 +43,12 @@ function runTask(type, n) {
 // tasks to run from args
 const runTasks = [
   ...Object.keys(tasks)
-    .filter(t => args[t])
-    .map(t => {
+    .filter((t) => args[t])
+    .map((t) => {
       if (typeof args[t] === 'string') {
         return () => runTask(t, args[t]);
       } else {
-        return args[t].map(n => () => runTask(t, n));
+        return args[t].map((n) => () => runTask(t, n));
       }
     }),
 ].flat();
@@ -62,7 +62,7 @@ function renamePackage(p) {
     if (data) {
       data = JSON.parse(data);
       data.name = `${namespace}/${pkgName}`;
-      fs.writeFile(pkgPath, JSON.stringify(data, null, 2), err => {
+      fs.writeFile(pkgPath, JSON.stringify(data, null, 2), (err) => {
         if (err) return console.log(err);
         resolve(`Renamed package: ${data.name}`);
       });
@@ -75,12 +75,12 @@ function renamePackage(p) {
 // Run each task
 function runEach(tasks) {
   let result = Promise.resolve();
-  tasks.forEach(task => {
-    result = result.then(task).then(res => {
+  tasks.forEach((task) => {
+    result = result.then(task).then((res) => {
       console.log(`SUCCESS: ${res.message}`);
       return renamePackage(res.path)
-        .then(res => console.log(res))
-        .catch(err => console.error(err));
+        .then((res) => console.log(res))
+        .catch((err) => console.error(err));
     });
   });
   return result;
@@ -88,5 +88,5 @@ function runEach(tasks) {
 
 // Go
 runEach(runTasks)
-  .then(_ => console.log(`SUCCESS: All packages created!`))
-  .catch(err => console.error(`ERROR: ${err}`));
+  .then((_) => console.log(`SUCCESS: All packages created!`))
+  .catch((err) => console.error(`ERROR: ${err}`));
