@@ -1,3 +1,10 @@
+<script context="module">
+  //import client from '../lib/apollo';
+  export async function preload(page, session) {
+    console.log('preload index');
+  }
+</script>
+
 <style>
   h1,
   figure,

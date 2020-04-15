@@ -84,7 +84,7 @@ export default {
       commonjs(),
     ],
     external: Object.keys(pkg.dependencies)
-      .filter(i => !i.match(/@nedkelly/)) // https://github.com/sveltejs/sapper-template/blob/master/README.md#using-external-components
+      .filter((i) => !i.match(/@100shapes/)) // https://github.com/sveltejs/sapper-template/blob/master/README.md#using-external-components
       .concat(
         require('module').builtinModules ||
           Object.keys(process.binding('natives')),

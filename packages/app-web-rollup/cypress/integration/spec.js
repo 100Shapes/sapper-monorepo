@@ -17,6 +17,11 @@ describe('Sapper template app', () => {
     cy.url().should('include', '/blog');
   });
 
+  it('navigates to /hacker-news', () => {
+    cy.get('nav a').contains('Hacker News').click();
+    cy.url().should('include', '/hacker-news');
+  });
+
   it('navigates to /love', () => {
     cy.get('nav a').contains('blog').click();
     cy.url().should('include', '/blog');
